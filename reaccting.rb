@@ -33,8 +33,8 @@ class Reaccting < Sinatra::Base
       filename = request.body.original_filename
       data = File.read(request.body)
 
-      logger.info filename
-      logger.info data
+      puts "FILENAME: #{filename}"
+      puts "DATA: #{data}"
 
       data.split("\n").each do |sample|
         s = JSON.parse(sample)
