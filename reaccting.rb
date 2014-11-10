@@ -12,6 +12,7 @@ class Reaccting < Sinatra::Base
   end
 
   configure :production do
+    require 'newrelic_rpm'
     enable :logging, :dump_errors, :run, :sessions
     Mongoid.load!("config/mongoid.yml")
   end
