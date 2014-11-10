@@ -5,6 +5,7 @@ gem 'sinatra-contrib'
 gem 'json'
 gem 'mongoid'
 gem 'newrelic_rpm'
+gem 'thin'
 
 group :test do
   gem 'rack-test'
