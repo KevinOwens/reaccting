@@ -32,6 +32,10 @@ class Reaccting < Sinatra::Base
     if request.form_data?
       filename = request.body.original_filename
       data = File.read(request.body)
+
+      logger.info filename
+      logger.info data
+
       data.split("\n").each do |sample|
         s = JSON.parse(sample)
         beacons = s["beacon"].map{|b| {mac: b["mac"], rssi: b["rssi"]}}
