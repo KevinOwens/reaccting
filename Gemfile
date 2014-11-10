@@ -4,6 +4,7 @@ gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'json'
 gem 'mongoid'
+gem 'newrelic_rpm'
 
 group :test do
   gem 'rack-test'

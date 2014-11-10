@@ -27,6 +27,7 @@ GEM
       connection_pool (~> 2.0)
       optionable (~> 0.2.0)
     multi_json (1.10.1)
+    newrelic_rpm (3.9.6.257)
     optionable (0.2.0)
     origin (2.1.1)
     rack (1.5.2)
@@ -56,6 +57,7 @@ PLATFORMS
 DEPENDENCIES
   json
   mongoid
+  newrelic_rpm
   rack-test
   sinatra
   sinatra-contrib
