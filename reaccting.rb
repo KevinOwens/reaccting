@@ -30,6 +30,7 @@ class Reaccting < Sinatra::Base
   end
 
   post '/v1/samples' do 
+    puts "REQUEST: #{request}"
     if request.form_data?
       filename = request.body.original_filename
       data = File.read(request.body)
