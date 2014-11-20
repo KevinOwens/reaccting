@@ -32,8 +32,9 @@ class Reaccting < Sinatra::Base
   post '/v1/samples' do 
     puts "REQUEST Accept: #{request.accept}"
     puts "REQUEST BODY: #{request.body.read}"
+    puts "MEDIA TYPE: #{request.media_type}"
     if request.form_data?
-      filename = request.body.original_filename
+      filename = request.body.read.try(:original_filename)
       data = File.read(request.body)
 
       puts "FILENAME: #{filename}"
@@ -41,6 +42,7 @@ class Reaccting < Sinatra::Base
 
       data.split("\n").each do |sample|
         s = JSON.parse(sample)
+        puts "Sample: #{s}"
         beacons = s["beacon"].map{|b| {mac: b["mac"], rssi: b["rssi"]}}
 
         Sample.create({
