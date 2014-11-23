@@ -28,7 +28,7 @@ class ReacctingTest < Minitest::Test
 
     get '/stats'
     assert_equal 200, last_response.status
-    assert_equal "{:count=>6, :last_file=>\"data_sample.txt\"}", last_response.body
+    assert_equal "{:count=>6}", last_response.body
 
     dump_sample_collection; assert_equal Sample.count, 0
   end
@@ -49,11 +49,11 @@ class ReacctingTest < Minitest::Test
     s = Sample.first
 
     assert_equal "862308023701042", s.device_id
-    assert_equal 1415498524, s.timestamp.to_i
-    assert_equal 96.0, s.gps_accuracy
-    assert_equal [-105.0510455, 39.9072341], s.lonlat
-    assert_equal [{"mac" => "F9:59:61:52:DA:D6", "rssi" => -60}], s.beacons
-    assert_equal "data_sample.txt", s.filename
+    assert_equal 1416563994, s.timestamp.to_i
+    assert_equal 12.0, s.gps_accuracy
+    assert_equal [10.8810131,-1.0885678], s.lonlat
+    assert_equal [], s.beacons
+    assert_equal false, s.filename.nil?
     refute_nil s.updated_at
     refute_nil s.created_at
 
