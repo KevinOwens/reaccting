@@ -24,7 +24,7 @@ class ReacctingTest < Minitest::Test
   def test_stats
     load_db; dump_sample_collection; assert_equal 0, Sample.count
     header 'Content-Type', 'multipart/form-data; boundary=----------------------------0715f70eb17843a6b17832b3d38fe558'
-    post '/v1/samples', uploaded_file
+    post '/v1/samples', File.read(test_file_path)
 
     get '/stats'
     assert_equal 200, last_response.status
@@ -39,7 +39,7 @@ class ReacctingTest < Minitest::Test
 
     #set the header/content-type to form-data and make the POST
     header 'Content-Type', 'multipart/form-data; boundary=----------------------------0715f70eb17843a6b17832b3d38fe558'
-    post '/v1/samples', uploaded_file
+    post '/v1/samples', File.read(test_file_path)
     assert_equal 200, last_response.status
 
     #assert that the samples got stored

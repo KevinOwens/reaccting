@@ -28,7 +28,7 @@ class Reaccting < Sinatra::Base
 
   post '/v1/samples' do 
     if request.form_data?
-      data = File.open(request.body).read()
+      data = request.body.string
       boundary, file_info, *data = data.split("\n")
       ending_boundary = data.pop
 
