@@ -51,7 +51,7 @@ class Reaccting < Sinatra::Base
 
   def parse_and_store_sample sample, timestamp=Time.now
     s = JSON.parse(sample)
-    beacons = s["b"].map{|b| {mac: b["mac"], rssi: b["rssi"]}}
+    beacons = s["b"].map{|b| {bid: b["bid"], r: b["r"]}}
     Sample.create({
       device_id: s["d"],
       timestamp: from_milliseconds(s["t"]), 
